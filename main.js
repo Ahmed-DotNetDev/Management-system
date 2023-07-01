@@ -10,6 +10,7 @@ let submit = document.getElementById("submit");
 //For testing
 console.log(title, price, taxes, ads, discount, total, count, category, submit);
 //Get Total
+
 function GetTotal() {
     if (price.value != '') {
         let result = +price.value + +ads.value + +taxes.value - +discount.value;
@@ -23,7 +24,21 @@ function GetTotal() {
     }
 }
 
-
+//Create Product
+let data = [];
+submit.onclick = function () {
+    let producting = {
+        title: title.value,
+        price: price.value,
+        taxes: taxes.value,
+        ads: ads.value,
+        discount: discount.value,
+        total: total.innerHTML,
+        count: count.value,
+        category: category.value,
+    }
+    console.log(producting);
+}
 
 
 
