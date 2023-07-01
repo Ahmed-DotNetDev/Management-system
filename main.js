@@ -28,23 +28,30 @@ function GetTotal() {
 let data = localStorage.Product !== '' ? JSON.parse(localStorage.Product) : [];
 
 submit.onclick = function () {
-    let producting = {
-        title: title.value,
-        price: price.value,
-        taxes: taxes.value,
-        ads: ads.value,
-        discount: discount.value,
-        total: total.innerHTML,
-        count: count.value,
-        category: category.value,
+    if (Validate()) {
+        alert("Fill Data Correctly!...");
     }
-    data.push(producting);
-    localStorage.setItem('Product', JSON.stringify(data));
-    console.log(data);
-    ClearData();
+    else {
+        let producting = {
+            title: title.value,
+            price: price.value,
+            taxes: taxes.value,
+            ads: ads.value,
+            discount: discount.value,
+            total: total.innerHTML,
+            count: count.value,
+            category: category.value,
+        }
+        data.push(producting);
+        console.log(producting);
+        localStorage.setItem('Product', JSON.stringify(data));
+        console.log(data);
+        ClearData();
+        ShowData();
+    }
 }
 
-
+//Clear data
 function ClearData() {
     //location.reload();
     title.value = '';
@@ -57,7 +64,36 @@ function ClearData() {
     category.value = '';
 }
 
+//Reading data
+function ShowData() {
+    let table = '';
+    for (let i = 0; i < data.length; i++) {
+        table +=
+            `
+    <tr>
+    <td>${i + 1}</td>
+    <td>${data[i].title}</td>
+    <td>${data[i].price}</td>
+    <td>${data[i].taxes}</td>
+    <td>${data[i].ads}</td>
+    <td>${data[i].discount}</td>
+    <td>${data[i].total}</td>
+    <td>${data[i].category}</td>
+    <td><button id="update">Update</button></td>
+    <td><button id="delete">Delete</button></td>
+    </tr>
+    `;
+        console.log(title);
+    }
+    document.getElementById("tbody").innerHTML = table;
+}
 
+//Validation data
+function Validate() {
+    if (title.value == '' || price.value == '' || ads.value == '' || count.value == '' || category.value == '') {
+        return true;
+    }
+}
 
 
 
