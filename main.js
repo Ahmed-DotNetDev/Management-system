@@ -25,7 +25,8 @@ function GetTotal() {
 }
 
 //Create Product
-let data = [];
+let data = localStorage.Product !== '' ? JSON.parse(localStorage.Product) : [];
+
 submit.onclick = function () {
     let producting = {
         title: title.value,
@@ -37,10 +38,24 @@ submit.onclick = function () {
         count: count.value,
         category: category.value,
     }
-    console.log(producting);
+    data.push(producting);
+    localStorage.setItem('Product', JSON.stringify(data));
+    console.log(data);
+    ClearData();
 }
 
 
+function ClearData() {
+    //location.reload();
+    title.value = '';
+    price.value = '';
+    taxes.value = '';
+    ads.value = '';
+    discount.value = '';
+    total.innerHTML = '';
+    count.value = '';
+    category.value = '';
+}
 
 
 
