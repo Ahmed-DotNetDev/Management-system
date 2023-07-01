@@ -77,7 +77,7 @@ function ShowData() {
         table +=
             `
     <tr>
-    <td>${i+1}</td>
+    <td>${i + 1}</td>
     <td>${dataPro[i].title}</td>
     <td>${dataPro[i].price}</td>
     <td>${dataPro[i].taxes}</td>
@@ -94,7 +94,7 @@ function ShowData() {
     document.getElementById("tbody").innerHTML = table;
     let deleteallbtn = document.getElementById("deleteALL");
     if (dataPro.length > 0) {
-        deleteallbtn.innerHTML = `<button onclick="ClearDllData()" id="clear">Delete All</button>`;
+        deleteallbtn.innerHTML = `<button onclick="ClearDllData()" id="clear">Delete All (${dataPro.length})</button>`;
     }
     else {
         deleteallbtn.innerHTML = ``;
