@@ -33,6 +33,7 @@ if (localStorage.product != null) {
 } else {
     dataPro = [];
 }
+
 submit.onclick = function () {
     let newPro = {
         title: title.value,
@@ -44,7 +45,13 @@ submit.onclick = function () {
         count: count.value,
         category: category.value,
     }
-    dataPro.push(newPro);
+    if (newPro.count > 0) {
+        for (let i = 0; i < newPro.count; i++) {
+            dataPro.push(newPro);
+        }
+    } else {
+        dataPro.push(newPro);
+    }
     localStorage.setItem('product', JSON.stringify(dataPro));
     console.log(dataPro);
     ClearData();
@@ -70,7 +77,7 @@ function ShowData() {
         table +=
             `
     <tr>
-    <td>${i}</td>
+    <td>${i+1}</td>
     <td>${dataPro[i].title}</td>
     <td>${dataPro[i].price}</td>
     <td>${dataPro[i].taxes}</td>
@@ -85,6 +92,13 @@ function ShowData() {
         console.log(title);
     }
     document.getElementById("tbody").innerHTML = table;
+    let deleteallbtn = document.getElementById("deleteALL");
+    if (dataPro.length > 0) {
+        deleteallbtn.innerHTML = `<button onclick="ClearDllData()" id="clear">Delete All</button>`;
+    }
+    else {
+        deleteallbtn.innerHTML = ``;
+    }
 }
 ShowData();
 
@@ -95,10 +109,16 @@ function DeleteItem(i) {
     ShowData();
 }
 
-
-
-
 //delete all
+function ClearDllData() {
+    localStorage.clear();
+    dataPro.splice(0);
+    ShowData();
+}
+
+
+
+
 //update
 //search
-//clean code
+//clean code and validation
