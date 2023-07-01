@@ -3,57 +3,56 @@ let price = document.getElementById("price");
 let taxes = document.getElementById("taxes");
 let ads = document.getElementById("ads");
 let discount = document.getElementById("discount");
-let total = document.getElementById("total");
-let count = document.getElementById("count");
 let category = document.getElementById("category");
 let submit = document.getElementById("submit");
-//For testing
-console.log(title, price, taxes, ads, discount, total, count, category, submit);
-//Get Total
+//testing
+console.log(title, price, taxes, ads, discount, category, submit);
 
-function GetTotal() {
-    if (price.value != '') {
-        let result = +price.value + +ads.value + +taxes.value - +discount.value;
-        total.innerHTML = result;
-        total.style.background = 'green';
-    }
-    else {
-        total.style.background = '#e20c9b';
-        total.innerHTML = '';
 
-    }
-}
-
-//Create Product
-let data = localStorage.Product !== '' ? JSON.parse(localStorage.Product) : [];
-
-submit.onclick = function () {
-    if (Validate()) {
-        alert("Fill Data Correctly!...");
-    }
-    else {
-        let producting = {
-            title: title.value,
-            price: price.value,
-            taxes: taxes.value,
-            ads: ads.value,
-            discount: discount.value,
-            total: total.innerHTML,
-            count: count.value,
-            category: category.value,
+//get total
+function get_total() {
+    try {
+        if (price.value != '') {
+            let result = +price.value + +ads.value + +taxes.value - +discount.value;
+            total.innerHTML = result;
+            total.style.background = 'green';
         }
-        data.push(producting);
-        console.log(producting);
-        localStorage.setItem('Product', JSON.stringify(data));
-        console.log(data);
-        ClearData();
-        ShowData();
+        else {
+            total.style.background = '#e20c9b';
+            total.innerHTML = '';
+        }
+    } catch (error) {
+        console.log(error);
     }
 }
 
-//Clear data
+//create product
+let dataPro;
+if (localStorage.product != null) {
+    dataPro = JSON.parse(localStorage.product);
+} else {
+    dataPro = [];
+}
+submit.onclick = function () {
+    let newPro = {
+        title: title.value,
+        price: price.value,
+        taxes: taxes.value,
+        ads: ads.value,
+        discount: discount.value,
+        total: total.innerHTML,
+        count: count.value,
+        category: category.value,
+    }
+    dataPro.push(newPro);
+    localStorage.setItem('product', JSON.stringify(dataPro));
+    console.log(dataPro);
+    ClearData();
+    ShowData();
+}
+
+//clear inputs
 function ClearData() {
-    //location.reload();
     title.value = '';
     price.value = '';
     taxes.value = '';
@@ -64,49 +63,42 @@ function ClearData() {
     category.value = '';
 }
 
-//Reading data
+//read
 function ShowData() {
     let table = '';
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < dataPro.length; i++) {
         table +=
             `
     <tr>
-    <td>${i + 1}</td>
-    <td>${data[i].title}</td>
-    <td>${data[i].price}</td>
-    <td>${data[i].taxes}</td>
-    <td>${data[i].ads}</td>
-    <td>${data[i].discount}</td>
-    <td>${data[i].total}</td>
-    <td>${data[i].category}</td>
+    <td>${i}</td>
+    <td>${dataPro[i].title}</td>
+    <td>${dataPro[i].price}</td>
+    <td>${dataPro[i].taxes}</td>
+    <td>${dataPro[i].ads}</td>
+    <td>${dataPro[i].discount}</td>
+    <td>${dataPro[i].total}</td>
+    <td>${dataPro[i].category}</td>
     <td><button id="update">Update</button></td>
-    <td><button id="delete">Delete</button></td>
+    <td><button onclick="DeleteItem(${i})" id="delete" >Delete</button></td>
     </tr>
     `;
         console.log(title);
     }
     document.getElementById("tbody").innerHTML = table;
 }
+ShowData();
 
-//Validation data
-function Validate() {
-    if (title.value == '' || price.value == '' || ads.value == '' || count.value == '' || category.value == '') {
-        return true;
-    }
+//delete item
+function DeleteItem(i) {
+    dataPro.splice(i, 1);//Add new array after delete
+    localStorage.product = JSON.stringify(dataPro);
+    ShowData();
 }
 
 
 
 
-
-
-
-
-
-
-
-
-function selectSearch(event) {
-    var button = event.target;
-    button.classList.toggle("selected");
-}
+//delete all
+//update
+//search
+//clean code

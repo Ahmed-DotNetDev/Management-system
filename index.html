@@ -20,10 +20,10 @@
         <div class="inputs">
             <input type="text" id="title" placeholder="Title">
             <div class="price">
-                <input onkeyup="GetTotal()" type="number" id="price" placeholder="Price">
-                <input onkeyup="GetTotal()" type="number" id="taxes" placeholder="Taxes">
-                <input onkeyup="GetTotal()" type="number" id="ads" placeholder="Ads">
-                <input onkeyup="GetTotal()" type="number" id="discount" placeholder="Discount">
+                <input onkeyup=" get_total();" type="number" id="price" placeholder="Price">
+                <input onkeyup=" get_total();" type="number" id="taxes" placeholder="Taxes">
+                <input onkeyup=" get_total();" type="number" id="ads" placeholder="Ads">
+                <input onkeyup=" get_total();" type="number" id="discount" placeholder="Discount">
                 <span id="total"></span>
             </div>
             <input type="number" id="count" placeholder="Count">
@@ -35,8 +35,8 @@
             <div class="search-box">
                 <input type="text" id="search" placeholder="Search">
                 <div class="search-buttons">
-                    <button id="search-title" onclick="selectSearch(event)">Search By Title</button>
-                    <button id="search-category" onclick="selectSearch(event)">Search By Category</button>
+                    <button id="search-title">Search By Title</button>
+                    <button id="search-category">Search By Category</button>
                 </div>
             </div>
 
@@ -56,7 +56,7 @@
                     </tr>
                 </thead>
                 <tbody id="tbody">
-                   
+
                 </tbody>
             </table>
 

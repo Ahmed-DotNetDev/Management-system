@@ -84,7 +84,6 @@ input::placeholder {
     background-color: #043120;
 }
 
-
 #total::before {
     content: 'Total: ';
 }
