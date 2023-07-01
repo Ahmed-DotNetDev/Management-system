@@ -7,9 +7,21 @@ let total = document.getElementById("total");
 let count = document.getElementById("count");
 let category = document.getElementById("category");
 let submit = document.getElementById("submit");
-
-//testing inputs and btn
+//For testing
 console.log(title, price, taxes, ads, discount, total, count, category, submit);
+//Get Total
+function GetTotal() {
+    if (price.value != '') {
+        let result = +price.value + +ads.value + +taxes.value - +discount.value;
+        total.innerHTML = result;
+        total.style.background = 'green';
+    }
+    else {
+        total.style.background = '#e20c9b';
+        total.innerHTML = '';
+
+    }
+}
 
 
 
