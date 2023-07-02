@@ -1,0 +1,272 @@
+$color_1: #fff;
+$color_2: #ffffffd7;
+$font-family_1: cursive;
+$background-color_1: #222;
+$background-color_2: #04aa6d;
+$background-color_3: #10ca86;
+$background-color_4: #043120;
+$background-color_5: #333;
+$background-color_6: #e20c9b;
+
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $background-color_1;
+    font-family: $font-family_1;
+}
+
+.profile {
+    .profile-img {
+        border-radius: 1000px;
+        width: 90px;
+        outline: 5px solid #04422a;
+        margin: 14px;
+
+        &:hover {
+            outline: 5px solid #04aa6d;
+            transition: .38s ease-in-out;
+            transform: scale(1.079);
+        }
+    }
+}
+
+.crud {
+    width: 70%;
+    margin: 13px auto;
+
+    .head {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+
+#clear {
+    background-color: $background-color_2;
+    color: $color_1;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    font-size: 17px;
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    font-weight: bold;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $background-color_3;
+        transition: .4s;
+    }
+
+    &:active {
+        background-color: $background-color_4;
+    }
+}
+
+.head {
+    h2 {
+        color: $color_2;
+        text-transform: uppercase;
+        margin: 10px;
+        letter-spacing: 1px;
+    }
+}
+
+p {
+    color: $color_2;
+    text-transform: uppercase;
+    margin: 10px;
+    letter-spacing: 1px;
+}
+
+.inputs {
+    width: 100%;
+}
+
+input {
+    &:focus {
+        transform: scale(1.03);
+    }
+
+    background-color: $background-color_5;
+    padding: 5px;
+    margin: 2px;
+    color: $color_1;
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 43px;
+    border-radius: 10px;
+    margin: 8px 2px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-transform: capitalize;
+
+    &::placeholder {
+        padding-left: 5px;
+    }
+}
+
+.price {
+    input {
+        width: 20%;
+    }
+}
+
+#submit {
+    background-color: $background-color_2;
+    color: $color_1;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    font-size: 17px;
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    font-weight: bold;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $background-color_3;
+        transition: .4s;
+    }
+
+    &:active {
+        background-color: $background-color_4;
+    }
+}
+
+#total {
+    &::before {
+        content: 'Total: ';
+    }
+
+    color: $color_1;
+    background-color: $background-color_6;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+#search-title {
+    background-color: $background-color_2;
+    color: $color_1;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    font-size: 17px;
+    width: 40%;
+    height: 40px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    font-weight: bold;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $background-color_3;
+        transition: .4s;
+    }
+}
+
+#search-category {
+    background-color: $background-color_2;
+    color: $color_1;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    font-size: 17px;
+    width: 40%;
+    height: 40px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    font-weight: bold;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $background-color_3;
+        transition: .4s;
+    }
+}
+
+#search {
+    margin-top: 18px;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    margin-top: 20px;
+    text-transform: capitalize;
+    color: $color_1;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+}
+
+#update {
+    background-color: $background-color_2;
+    color: $color_1;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    font-size: 17px;
+    width: 90%;
+    height: 40px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    font-weight: bold;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $background-color_3;
+        transition: .4s;
+    }
+
+    &:active {
+        background-color: $background-color_4;
+    }
+}
+
+#delete {
+    background-color: $background-color_2;
+    color: $color_1;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    font-size: 17px;
+    width: 90%;
+    height: 40px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    font-weight: bold;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $background-color_3;
+        transition: .4s;
+    }
+
+    &:active {
+        background-color: $background-color_4;
+    }
+}
+
+#search-title.selected {
+    background-color: $background-color_6;
+}
+
+#search-category.selected {
+    background-color: $background-color_6;
+}
