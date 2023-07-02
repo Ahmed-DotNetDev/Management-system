@@ -45,12 +45,19 @@ submit.onclick = function () {
         count: count.value,
         category: category.value,
     }
-    if (newPro.count > 0) {
-        for (let i = 0; i < newPro.count; i++) {
+    if (mode === 'create') {
+        if (newPro.count > 0) {
+            for (let i = 0; i < newPro.count; i++) {
+                dataPro.push(newPro);
+            }
+        } else {
             dataPro.push(newPro);
         }
     } else {
-        dataPro.push(newPro);
+        dataPro[tmp] = newPro;
+        mode = 'create';
+        submit.innerHTML = 'Create';
+        count.style.display = 'block';
     }
     localStorage.setItem('product', JSON.stringify(dataPro));
     console.log(dataPro);
@@ -72,12 +79,13 @@ function ClearData() {
 
 //read
 function ShowData() {
+    get_total();
     let table = '';
     for (let i = 0; i < dataPro.length; i++) {
         table +=
             `
     <tr>
-    <td>${i + 1}</td>
+    <td>${i}</td>
     <td>${dataPro[i].title}</td>
     <td>${dataPro[i].price}</td>
     <td>${dataPro[i].taxes}</td>
@@ -85,7 +93,7 @@ function ShowData() {
     <td>${dataPro[i].discount}</td>
     <td>${dataPro[i].total}</td>
     <td>${dataPro[i].category}</td>
-    <td><button id="update">Update</button></td>
+    <td><button onclick="UpdateData(${i})" id="update">Update</button></td>
     <td><button onclick="DeleteItem(${i})" id="delete" >Delete</button></td>
     </tr>
     `;
@@ -114,11 +122,34 @@ function ClearDllData() {
     localStorage.clear();
     dataPro.splice(0);
     ShowData();
+    location.reload();
+}
+
+let mode = 'create';
+let tmp;
+//update
+function UpdateData(i) {
+    //test
+    //console.log(i);
+    title.value = dataPro[i].title;
+    price.value = dataPro[i].price;
+    taxes.value = dataPro[i].taxes;
+    ads.value = dataPro[i].ads;
+    discount.value = dataPro[i].discount;
+    get_total();
+    count.style.display = 'none';
+    category.value = dataPro[i].category;
+    submit.innerHTML = 'Update';
+    mode = 'update';
+ 
+
+    tmp = i;
+    scroll({
+        top: 0,
+        behavior: "smooth",
+    })
 }
 
 
-
-
-//update
 //search
 //clean code and validation
