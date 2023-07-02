@@ -8,8 +8,8 @@ let submit = document.getElementById("submit");
 //testing
 console.log(title, price, taxes, ads, discount, category, submit);
 
-function GoAccount(){
-    window.open('https://github.com/Ahmed-DotNetDev', '_blank'); 
+function GoAccount() {
+    window.open('https://github.com/Ahmed-DotNetDev', '_blank');
 }
 
 
@@ -171,7 +171,7 @@ function GetSearchMood(id) {
     //searchinput.style.borderBottom='2px solid red';
     //Test
     console.log(searchMode);
-    searchinput.value='';
+    searchinput.value = '';
     ShowData();
 }
 
@@ -202,12 +202,6 @@ function searchData(value) {
 
         }
     }
-
-
-
-
-
-
     else {
         for (let i = 0; i < dataPro.length; i++) {
             if (dataPro[i].category.includes(value)) {
@@ -237,4 +231,4 @@ function searchData(value) {
 }
 
 
-//clean code and validation
+//clean code and validation ---------->Loadding...✅
