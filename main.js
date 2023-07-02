@@ -6,7 +6,7 @@ let discount = document.getElementById("discount");
 let category = document.getElementById("category");
 let submit = document.getElementById("submit");
 //testing
-console.log(title, price, taxes, ads, discount, category, submit);
+//console.log(title, price, taxes, ads, discount, category, submit);
 
 function GoAccount() {
     window.open('https://github.com/Ahmed-DotNetDev', '_blank');
@@ -38,34 +38,39 @@ if (localStorage.product != null) {
 }
 
 submit.onclick = function () {
-    let newPro = {
-        title: title.value,
-        price: price.value,
-        taxes: taxes.value,
-        ads: ads.value,
-        discount: discount.value,
-        total: total.innerHTML,
-        count: count.value,
-        category: category.value,
-    }
-    if (mode === 'create') {
-        if (newPro.count > 0) {
-            for (let i = 0; i < newPro.count; i++) {
+    if (validationCreate()) {
+        let newPro = {
+            title: title.value,
+            price: price.value,
+            taxes: taxes.value,
+            ads: ads.value,
+            discount: discount.value,
+            total: total.innerHTML,
+            count: count.value,
+            category: category.value,
+        }
+        if (mode === 'create') {
+            if (newPro.count > 0) {
+                for (let i = 0; i < newPro.count; i++) {
+                    dataPro.push(newPro);
+                }
+            } else {
                 dataPro.push(newPro);
             }
         } else {
-            dataPro.push(newPro);
+            dataPro[tmp] = newPro;
+            mode = 'create';
+            submit.innerHTML = 'Create';
+            count.style.display = 'block';
         }
-    } else {
-        dataPro[tmp] = newPro;
-        mode = 'create';
-        submit.innerHTML = 'Create';
-        count.style.display = 'block';
+        localStorage.setItem('product', JSON.stringify(dataPro));
+        // console.log(dataPro);
+        ClearData();
+        ShowData();
     }
-    localStorage.setItem('product', JSON.stringify(dataPro));
-    // console.log(dataPro);
-    ClearData();
-    ShowData();
+    else {
+        alert("FILL DATA...")
+    }
 }
 
 //clear inputs
@@ -222,5 +227,12 @@ function searchData(value) {
     document.getElementById("tbody").innerHTML = table;
 }
 
-
-//clean code and validation ---------->Loadding...✅
+function validationCreate() {
+    if (title.value != '' || category.value != '' || price.value != '') {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+//Finish project...✅
