@@ -19,6 +19,7 @@ body {
   outline: 5px solid #04aa6d;
   transition: 0.38s ease-in-out;
   transform: scale(1.079);
+  cursor: pointer;
 }
 
 .crud {
