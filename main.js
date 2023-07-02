@@ -141,8 +141,6 @@ function UpdateData(i) {
     category.value = dataPro[i].category;
     submit.innerHTML = 'Update';
     mode = 'update';
- 
-
     tmp = i;
     scroll({
         top: 0,
@@ -150,6 +148,89 @@ function UpdateData(i) {
     })
 }
 
-
 //search
+let searchMode = 'title';
+let searchinput = document.getElementById("search");
+function GetSearchMood(id) {
+    //Test
+    // console.log(id);
+    if (id == 'search-title') {
+        searchMode = 'title';
+        searchinput.placeholder = 'Search By Title...';
+    }
+    else {
+        searchMode = 'category';
+        searchinput.placeholder = 'Search By Category...';
+    }
+    searchinput.focus();
+    searchinput.style.outline = '1px solid red';
+    //searchinput.style.borderBottom='2px solid red';
+    //Test
+    console.log(searchMode);
+    searchinput.value='';
+    ShowData();
+}
+
+function searchData(value) {
+    //Test
+    let table;
+    console.log(value);
+    if (searchMode == 'title') {
+        for (let i = 0; i < dataPro.length; i++) {
+            if (dataPro[i].title.includes(value)) {
+                //  test
+                //  console.log("yes");
+                table += `
+        <tr>
+        <td>${i}</td>
+        <td>${dataPro[i].title}</td>
+        <td>${dataPro[i].price}</td>
+        <td>${dataPro[i].taxes}</td>
+        <td>${dataPro[i].ads}</td>
+        <td>${dataPro[i].discount}</td>
+        <td>${dataPro[i].total}</td>
+        <td>${dataPro[i].category}</td>
+        <td><button onclick="UpdateData(${i})" id="update">Update</button></td>
+        <td><button onclick="DeleteItem(${i})" id="delete" >Delete</button></td>
+        </tr>
+        `;
+            }
+
+        }
+    }
+
+
+
+
+
+
+    else {
+        for (let i = 0; i < dataPro.length; i++) {
+            if (dataPro[i].category.includes(value)) {
+                //  test
+                //  console.log("yes");
+                table += `
+        <tr>
+        <td>${i}</td>
+        <td>${dataPro[i].title}</td>
+        <td>${dataPro[i].price}</td>
+        <td>${dataPro[i].taxes}</td>
+        <td>${dataPro[i].ads}</td>
+        <td>${dataPro[i].discount}</td>
+        <td>${dataPro[i].total}</td>
+        <td>${dataPro[i].category}</td>
+        <td><button onclick="UpdateData(${i})" id="update">Update</button></td>
+        <td><button onclick="DeleteItem(${i})" id="delete" >Delete</button></td>
+        </tr>
+        `;
+            }
+
+        }
+    }
+
+    document.getElementById("tbody").innerHTML = table;
+
+}
+
+
 //clean code and validation
