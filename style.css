@@ -9,6 +9,20 @@ body {
     font-family: cursive;
 }
 
+.profile .profile-img{
+    border-radius: 1000px;
+    width: 90px;
+    outline: 5px solid #04422a;
+    margin: 14px;
+}
+
+.profile .profile-img:hover{
+    outline: 5px solid #04aa6d;
+    transition: .38s ease-in-out;
+    transform: scale(1.079);
+}
+
+
 .crud {
     width: 70%;
     margin: 13px auto;

@@ -8,6 +8,10 @@ let submit = document.getElementById("submit");
 //testing
 console.log(title, price, taxes, ads, discount, category, submit);
 
+function GoAccount(){
+    window.open('https://github.com/Ahmed-DotNetDev', '_blank'); 
+}
+
 
 //get total
 function get_total() {
