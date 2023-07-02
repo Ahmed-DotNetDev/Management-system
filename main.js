@@ -12,7 +12,6 @@ function GoAccount() {
     window.open('https://github.com/Ahmed-DotNetDev', '_blank');
 }
 
-
 //get total
 function get_total() {
     try {
@@ -64,7 +63,7 @@ submit.onclick = function () {
         count.style.display = 'block';
     }
     localStorage.setItem('product', JSON.stringify(dataPro));
-    console.log(dataPro);
+    // console.log(dataPro);
     ClearData();
     ShowData();
 }
@@ -89,7 +88,7 @@ function ShowData() {
         table +=
             `
     <tr>
-    <td>${i}</td>
+    <td>${i + 1}</td>
     <td>${dataPro[i].title}</td>
     <td>${dataPro[i].price}</td>
     <td>${dataPro[i].taxes}</td>
@@ -101,7 +100,7 @@ function ShowData() {
     <td><button onclick="DeleteItem(${i})" id="delete" >Delete</button></td>
     </tr>
     `;
-        console.log(title);
+        // console.log(title);
     }
     document.getElementById("tbody").innerHTML = table;
     let deleteallbtn = document.getElementById("deleteALL");
@@ -160,17 +159,16 @@ function GetSearchMood(id) {
     // console.log(id);
     if (id == 'search-title') {
         searchMode = 'title';
-        searchinput.placeholder = 'Search By Title...';
     }
     else {
         searchMode = 'category';
-        searchinput.placeholder = 'Search By Category...';
     }
+    searchinput.placeholder = `Search By: ${searchMode}`
     searchinput.focus();
     searchinput.style.outline = '1px solid red';
     //searchinput.style.borderBottom='2px solid red';
     //Test
-    console.log(searchMode);
+    // console.log(searchMode);
     searchinput.value = '';
     ShowData();
 }
@@ -178,15 +176,15 @@ function GetSearchMood(id) {
 function searchData(value) {
     //Test
     let table;
-    console.log(value);
-    if (searchMode == 'title') {
-        for (let i = 0; i < dataPro.length; i++) {
+    //console.log(value);
+    for (let i = 0; i < dataPro.length; i++) {
+        if (searchMode == 'title') {
             if (dataPro[i].title.includes(value)) {
                 //  test
                 //  console.log("yes");
                 table += `
         <tr>
-        <td>${i}</td>
+        <td>${i + 1}</td>
         <td>${dataPro[i].title}</td>
         <td>${dataPro[i].price}</td>
         <td>${dataPro[i].taxes}</td>
@@ -199,17 +197,14 @@ function searchData(value) {
         </tr>
         `;
             }
-
         }
-    }
-    else {
-        for (let i = 0; i < dataPro.length; i++) {
+        else {
             if (dataPro[i].category.includes(value)) {
                 //  test
                 //  console.log("yes");
                 table += `
         <tr>
-        <td>${i}</td>
+        <td>${i + 1}</td>
         <td>${dataPro[i].title}</td>
         <td>${dataPro[i].price}</td>
         <td>${dataPro[i].taxes}</td>
@@ -222,12 +217,9 @@ function searchData(value) {
         </tr>
         `;
             }
-
         }
     }
-
     document.getElementById("tbody").innerHTML = table;
-
 }
 
 
